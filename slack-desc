@@ -1,0 +1,11 @@
+gdal: GDAL (Geospatial Data Abstraction Library)
+gdal:
+gdal: GDAL s a translator library for raster and vector geospatial data formats
+gdal: that is released under an X/MIT style Open Source license by the Open
+gdal: Source Geospatial Foundation.  As a library, it presents a single raster
+gdal: abstract data model and vector abstract data model to the calling
+gdal: application for all supported formats.  It also comes with a variety of
+gdal: useful commandline utilities for data translation and processing.
+gdal:
+gdal:
+gdal: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
