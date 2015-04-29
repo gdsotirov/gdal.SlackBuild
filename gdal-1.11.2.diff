@@ -15,9 +15,9 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #
-diff -urNad gdal-1.10.1-orig/swig/python/GNUmakefile gdal-1.10.1/swig/python/GNUmakefile
---- gdal-1.10.1-orig/swig/python/GNUmakefile	2013-08-26 23:01:11.000000000 +0300
-+++ gdal-1.10.1/swig/python/GNUmakefile	2015-04-26 18:03:48.000000000 +0300
+diff -urNad gdal-1.11.2-orig/swig/python/GNUmakefile gdal-1.11.2/swig/python/GNUmakefile
+--- gdal-1.11.2-orig/swig/python/GNUmakefile	2015-02-10 14:12:08.000000000 +0200
++++ gdal-1.11.2/swig/python/GNUmakefile	2015-04-29 23:17:53.000000000 +0300
 @@ -68,9 +68,9 @@
  install:
  
