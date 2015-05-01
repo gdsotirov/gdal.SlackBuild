@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 # 
-# $Id: gdal.SlackBuild,v 1.4 2015/04/29 21:18:26 gsotirov Exp $
+# $Id: gdal.SlackBuild,v 1.5 2015/05/01 20:47:12 gsotirov Exp $
 #
 
 . ../../slack-package.conf
@@ -62,6 +62,7 @@ CXXFLAGS=$SLKCFLAGS \
 ./configure --build=$ARCH-slackware-linux \
             --host=$ARCH-slackware-linux \
             --prefix=/usr \
+            --includedir=/usr/include/$NAME \
             --libdir=/usr/lib${LIBDIRSUFFIX} \
             --docdir=/usr/doc/$NAME-$VERSION \
             --enable-shared=yes \
