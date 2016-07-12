@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # Slackware build script for GDAL
-# Copyright (C) 2015 Georgi D. Sotirov <gdsotirov@dir.bg>
+# Copyright (C) 2015-2016 Georgi D. Sotirov <gdsotirov@dir.bg>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -17,13 +17,13 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 # 
-# $Id: gdal.SlackBuild,v 1.5 2015/05/01 20:47:12 gsotirov Exp $
+# $Id: gdal.SlackBuild,v 1.6 2016/07/12 20:13:32 gsotirov Exp $
 #
 
 . ../../slack-package.conf
 
 NAME=gdal
-VERSION=1.11.2
+VERSION=1.11.4
 BUILD=${BUILD:-1}
 
 TMP=${TMP:-/tmp}
@@ -91,7 +91,7 @@ CXXFLAGS=$SLKCFLAGS \
 #           --with-ruby # won't build
 
 # Build & install
-make -j 4 || exit 5
+make -j4 || exit 5
 make DESTDIR=$PKG install || exit 6
 
 # Prepare
