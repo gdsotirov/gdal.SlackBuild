@@ -17,13 +17,13 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 # 
-# $Id: gdal.SlackBuild,v 1.6 2016/07/12 20:13:32 gsotirov Exp $
+# $Id: gdal.SlackBuild,v 1.7 2016/07/16 07:37:17 gsotirov Exp $
 #
 
 . ../../slack-package.conf
 
 NAME=gdal
-VERSION=1.11.4
+VERSION=2.1.1
 BUILD=${BUILD:-1}
 
 TMP=${TMP:-/tmp}
@@ -53,8 +53,10 @@ tar -xvf $CWD/$NAME-$VERSION.tar.?z* || exit 3
 cd $SRC
 fix_source
 
-# Apply patch(es)
-patch -b -z .orig -p1 < $CWD/$NAME-$VERSION.diff
+# Apply patch(es) if any
+if [ -e $CWD/$NAME-$VERSION.diff ]; then
+  patch -b -z .orig -p1 < $CWD/$NAME-$VERSION.diff
+fi
 
 # Configure
 CFLAGS=$SLKCFLAGS \
@@ -67,31 +69,35 @@ CXXFLAGS=$SLKCFLAGS \
             --docdir=/usr/doc/$NAME-$VERSION \
             --enable-shared=yes \
             --enable-static=no \
+            --with-sse=yes \
+            --with-avx=yes \
             --with-threads=yes \
             --with-libz=/usr/lib \
             --with-liblzma=yes \
             --with-png=/usr/lib \
+            --with-libtiff=/usr/lib \
             --with-jpeg=/usr/lib \
             --with-gif=/usr/lib \
             --with-jasper=/usr/lib \
             --with-openjpeg \
             --with-mysql \
+            --with-expat=/usr/lib \
             --with-odbc=/usr/lib \
             --with-curl=/usr/bin/curl-config \
             --with-xml2=/usr/lib \
-            --with-sqlite3 \
+            --with-sqlite3=/usr/lib \
             --with-pcre \
+            --with-webp=yes \
             --with-geos=yes \
-            --with-ogr=yes \
+            --with-qhull=yes \
             --with-poppler \
             --with-perl \
             --with-python=yes || exit 4
-#           --with-php  # won't build with error: 'tsrm_ls' was not declared in this scope
-#           --with-tiff # external tiff lacks BigTIFF support
-#           --with-ruby # won't build
+#           --with-php  # out of date: won't build with error: 'tsrm_ls' was not declared in this scope
+#           --with-ruby # out of date: won't build
 
 # Build & install
-make -j4 || exit 5
+make || exit 5
 make DESTDIR=$PKG install || exit 6
 
 # Prepare
@@ -109,7 +115,9 @@ mkdir -p $PKG/usr/src/slackbuilds/$NAME-$VERSION
 install -m 644 $CWD/slack-desc          $PKG/usr/src/slackbuilds/$NAME-$VERSION/slack-desc
 install -m 644 $CWD/slack-required      $PKG/usr/src/slackbuilds/$NAME-$VERSION/slack-required
 install -m 644 $CWD/slack-suggests      $PKG/usr/src/slackbuilds/$NAME-$VERSION/slack-suggests
+if [ -e $CWD/$NAME-$VERSION.diff ]; then
 install -m 644 $CWD/$NAME-$VERSION.diff $PKG/usr/src/slackbuilds/$NAME-$VERSION/$NAME-$VERSION.diff
+fi
 install -m 644 $CWD/$NAME.SlackBuild    $PKG/usr/src/slackbuilds/$NAME-$VERSION/$NAME.SlackBuild
 
 # Assemble
