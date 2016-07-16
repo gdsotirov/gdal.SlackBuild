@@ -1,2 +1,2 @@
-perl >= 5.16
+perl >= 5.22
 python >= 2.7
