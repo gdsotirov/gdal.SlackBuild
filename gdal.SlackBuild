@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 # 
-# $Id: gdal.SlackBuild,v 1.7 2016/07/16 07:37:17 gsotirov Exp $
+# $Id: gdal.SlackBuild,v 1.8 2016/07/16 08:21:22 gsotirov Exp $
 #
 
 . ../../slack-package.conf
@@ -105,6 +105,12 @@ make DESTDIR=$PKG install || exit 6
 DOCFILES="$DOCFILES COMMITERS LICENSE.TXT PROVENANCE.TXT VERSION"
 ( cd $SRC; create_docs $PKG $NAME-$VERSION )
 ( cd $PKG/usr/doc/$NAME-$VERSION; mv LICENSE.TXT COPYING )
+# Move Perl bindings in the right place
+if [ "$ARCH" == "x86_64" ]; then
+  cd $PKG/usr
+  mv lib/perl5 lib${LIBDIRSUFFIX}/perl5
+  rmdir lib
+fi
 
 mkdir -p $PKG/install
 install -m 644 $CWD/slack-desc     $PKG/install/slack-desc
