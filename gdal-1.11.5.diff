@@ -1,4 +1,3 @@
-a0 32
 # Patch to fix Python bindings installation
 # Copyright (C) 2015-2016 Georgi D. Sotirov <gdsotirov@dir.bg>
 #
@@ -16,9 +15,9 @@ a0 32
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #
-diff -urNad gdal-1.11.4-orig/swig/python/GNUmakefile gdal-1.11.4/swig/python/GNUmakefile
---- gdal-1.11.4-orig/swig/python/GNUmakefile	2016-01-25 15:03:50.000000000 +0200
-+++ gdal-1.11.4/swig/python/GNUmakefile	2016-07-12 21:47:48.000000000 +0300
+diff -urNad gdal-1.11.5-orig/swig/python/GNUmakefile gdal-1.11.5/swig/python/GNUmakefile
+--- gdal-1.11.5-orig/swig/python/GNUmakefile	2016-07-01 11:55:07.000000000 +0300
++++ gdal-1.11.5/swig/python/GNUmakefile	2016-10-22 09:59:11.000000000 +0300
 @@ -68,9 +68,9 @@
  install:
  
