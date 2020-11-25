@@ -8,4 +8,4 @@ gdal: application for all supported formats.  It also comes with a variety of
 gdal: useful commandline utilities for data translation and processing.
 gdal:
 gdal:
-gdal: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
+gdal: Packaged by Georgi D. Sotirov <gdsotirov@gmail.com>
